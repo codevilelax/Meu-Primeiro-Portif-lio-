@@ -63,7 +63,7 @@
         nav ul li a { text-decoration: none; color: white; transition: 0.3s; font-size: 0.85rem; text-transform: uppercase; font-weight: 600; }
         nav ul li a:hover { color: var(--primary-red); }
 
-        /* BOTAO HAMBURGUER (Escondido por padrão) */
+        /* BOTAO HAMBURGUER pra quem ta no mobile */
         .menu-toggle {
             display: none;
             font-size: 1.5rem;
@@ -137,12 +137,12 @@
 
         footer { text-align: center; padding: 50px; opacity: 0.4; font-size: 0.8rem; }
 
-        /* AJUSTES PARA CELULAR */
+        /* AJUSTES PRA QUEM TA NO MOBILE */
         @media (max-width: 968px) {
-            .menu-toggle { display: block; } /* Mostra o botão hambúrguer */
+            .menu-toggle { display: block; } 
             
             nav ul {
-                display: none; /* Esconde a lista no celular */
+                display: none; 
                 flex-direction: column;
                 position: absolute;
                 top: 75px;
@@ -154,7 +154,7 @@
                 border-bottom: 2px solid var(--primary-red);
             }
 
-            nav ul.active { display: flex; } /* Mostra quando clicado */
+            nav ul.active { display: flex; } 
 
             nav ul li { margin: 15px 0; }
             
@@ -201,8 +201,24 @@
     <section id="sobre">
         <h2 class="section-title" data-aos="fade-up">Sobre Mim</h2>
         <div class="about-container" data-aos="fade-up">
-            <p>-> Tenho 17 anos e estou em desenvolvimento na área de Tecnologia da Informação, com foco em suporte de sistemas e evolução para Engenharia de Dados. Atualmente atuo em Help Desk, adquirindo experiência na resolução de problemas, atendimento ao usuário e suporte técnico, com interesse em aprimorar conhecimentos em SQL e análise de dados. 
-            Cursando o Ensino Médio (conclusão prevista para 2026) e o curso técnico em Administração pelo SEST SENAT, também concluí Engenharia de Produção pelo SENAI. Possuo experiência autodidata em edição de imagens e vídeos, utilizando ferramentas como Photoshop e Adobe Premiere; graças a esses conhecimentos, aprimorei minhas habilidades em HTML e sigo em constante evolução profissional. <-</p>
+            <p>
+  Atualmente atuo com <strong>Suporte de TI (Help Desk)</strong>, onde desenvolvo 
+  competências sólidas em <strong>resolução de problemas técnicos</strong> e atendimento 
+  especializado ao usuário. Meu foco de carreira é a transição para a 
+  <strong>Engenharia de Dados</strong>, dedicando meus estudos ao domínio de 
+  <strong>SQL</strong> e análise de sistemas.
+</p>
+
+<p>
+  Possuo uma formação técnica diferenciada, tendo concluído o curso de 
+  <strong>Engenharia de Produção pelo SENAI</strong> e cursando 
+  <strong>Administração pelo SEST SENAT</strong>, com previsão de conclusão do Ensino Médio 
+  para 2026. Além da base em infraestrutura e gestão, domino ferramentas de edição 
+  profissional como <strong>Adobe Photoshop e Premiere</strong>, habilidades que 
+  impulsionaram minha evolução autodidata em <strong>HTML</strong> e desenvolvimento web. 
+  Sou movido por tecnologia e pela constante busca por eficiência técnica e 
+  automação de processos.
+</p>
         </div>
     </section>
 
@@ -322,7 +338,7 @@
             mirror: true 
         });
 
-        // Lógica do Menu Hambúrguer
+        // Menu Hambúrguer Pros mobilesssss
         const mobileMenu = document.getElementById('mobile-menu');
         const navList = document.getElementById('nav-list');
 
@@ -337,7 +353,7 @@
             });
         });
 
-        // Smooth Scroll (Rolagem Suave)
+        // Rolagem Suave
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
