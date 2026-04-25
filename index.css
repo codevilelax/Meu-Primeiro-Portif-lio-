@@ -1,0 +1,88 @@
+@media (max-width: 600px) {
+    /* Ajusta o título principal para não ficar gigante no celular */
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    /* Esconde o menu ou diminui muito o texto para caber */
+    nav ul {
+        gap: 10px;
+    }
+    
+    nav ul li {
+        margin-left: 10px;
+    }
+
+    nav ul li a {
+        font-size: 0.7rem; /* Texto menor para caber na linha */
+    }
+
+    /* Dá mais espaço nas seções para o dedo conseguir dar scroll */
+    section {
+        padding: 80px 5% 40px 5%;
+    }
+
+    /* Centraliza a logo e a foto melhor no mobile */
+    nav {
+        padding: 10px 5%;
+        flex-direction: column; /* Coloca o menu embaixo da logo se ficar apertado */
+        gap: 10px;
+    }
+}
+/* AJUSTES PARA CELULAR */
+@media (max-width: 968px) {
+    .menu-toggle { display: block; }
+    
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        background: rgba(20, 20, 20, 0.95);
+        padding: 20px;
+        text-align: center;
+        border-bottom: 2px solid var(--primary-red);
+    }
+
+    nav ul.active { display: flex; }
+    nav ul li { margin: 15px 0; }
+
+    /* --- MELHORIAS NO TEXTO MOBILE --- */
+    
+    .hero h1 { 
+        font-size: 2.2rem; /* Diminuído para não quebrar feio */
+        line-height: 1.2;
+    }
+
+    h2.section-title {
+        font-size: 1.8rem; /* Títulos de seção menores */
+        margin-bottom: 40px;
+    }
+
+    .about-container {
+        padding: 25px;
+        text-align: left; /* Justificado no celular fica ruim, 'left' é melhor */
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .timeline-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .timeline-content ul {
+        font-size: 0.8rem;
+    }
+
+    section { 
+        padding: 60px 5% 30px 5%; /* Diminuído o recuo para ganhar espaço */
+    }
+
+    .timeline::after { left: 31px; }
+    .timeline-item { width: 100%; padding-left: 60px; padding-right: 10px; }
+    .timeline-item::after { left: 21px; }
+    .right { left: 0; }
+    .split-grid { grid-template-columns: 1fr; }
+}
