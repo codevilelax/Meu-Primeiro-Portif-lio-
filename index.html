@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio Pedro Vilela | Aprendiz em Suporte de Sistemas & Dados</title>
-    
+    <title>Portfólio Pedro Vilela | Suporte de Sistemas & Desenvolvimento</title>
+    <meta name="description" content="Pedro Vilela, aprendiz de sistemas na IBL Logística. Suporte de sistemas, SQL e estudos de programação para se tornar desenvolvedor.">
+
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
@@ -63,6 +64,14 @@
         nav ul li a { text-decoration: none; color: white; transition: 0.3s; font-size: 0.85rem; text-transform: uppercase; font-weight: 600; }
         nav ul li a:hover { color: var(--primary-red); }
 
+        /* Linha vermelha que cresce embaixo do link */
+        nav ul li a { position: relative; padding-bottom: 4px; }
+        nav ul li a::after {
+            content: ''; position: absolute; left: 0; bottom: 0;
+            width: 0; height: 2px; background: var(--primary-red); transition: 0.3s;
+        }
+        nav ul li a:hover::after { width: 100%; }
+
         /* BOTAO HAMBURGUER pra quem ta no mobile */
         .menu-toggle {
             display: none;
@@ -76,6 +85,14 @@
         .hero-content { background: var(--glass); padding: 60px; border-radius: 30px; border: 1px solid var(--glass-border); backdrop-filter: blur(10px); }
         .hero h1 { font-size: 3.5rem; margin-bottom: 10px; }
         .hero h1 span { color: var(--primary-red); }
+        .hero-local { margin-top: 12px; font-size: 0.85rem; opacity: 0.6; }
+        .hero-local i { color: var(--primary-red); margin-right: 4px; }
+
+        .hero-buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+        .hero-btn { padding: 12px 28px; border-radius: 50px; background: var(--primary-red); color: white; text-decoration: none; font-size: 0.85rem; font-weight: 700; border: 1px solid var(--primary-red); transition: 0.3s; }
+        .hero-btn:hover { filter: brightness(1.2); transform: scale(1.05); }
+        .hero-btn.outline { background: transparent; border-color: var(--glass-border); }
+        .hero-btn.outline:hover { border-color: var(--primary-red); filter: none; }
 
         /* SEÇÃO SOBRE MIM */
         .about-container {
@@ -86,12 +103,17 @@
             max-width: 900px;
             margin: 0 auto;
             line-height: 1.8;
-            text-align: justify;
         }
+
+        .about-container p + p { margin-top: 18px; }
 
         /* SEÇÕES */
         section { padding: 120px 10% 60px 10%; }
         h2.section-title { text-align: center; font-size: 2.5rem; margin-bottom: 80px; text-transform: uppercase; letter-spacing: 3px; }
+        h2.section-title::after {
+            content: ''; display: block; width: 50px; height: 3px;
+            margin: 15px auto 0; background: var(--primary-red); border-radius: 3px;
+        }
 
         /* TIMELINE */
         .timeline { position: relative; max-width: 1100px; margin: 0 auto; }
@@ -108,8 +130,8 @@
         .right { left: 50%; }
         .right::after { left: -10px; }
 
-        .timeline-content { padding: 30px; background: var(--glass); border: 1px solid var(--glass-border); border-radius: 20px; transition: 0.3s; }
-        .timeline-content:hover { background: rgba(255,255,255,0.12); transform: scale(1.02); }
+        .timeline-content { padding: 30px; background: var(--glass); border: 1px solid var(--glass-border); border-radius: 20px; transition: 0.3s; overflow-wrap: break-word; }
+        .timeline-content:hover { background: rgba(255,255,255,0.12); transform: scale(1.02); box-shadow: 0 10px 30px rgba(230, 57, 70, 0.15); }
         .timeline-content h3 { color: var(--primary-red); font-size: 1.3rem; margin-bottom: 5px; }
         .timeline-content h4 { font-size: 1rem; color: #fff; margin-bottom: 10px; opacity: 0.9; }
         .timeline-content .date { font-size: 0.8rem; color: #aaa; font-weight: bold; display: block; margin-bottom: 15px; }
@@ -119,19 +141,35 @@
         .timeline-content ul li::before { content: '→'; position: absolute; left: 0; color: var(--primary-red); }
 
         /* GRID DE PROJETOS */
-        .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
+        .split-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-top: 40px; }
         .project-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 15px; padding: 25px; margin-bottom: 20px; transition: 0.4s; }
-        .project-card:hover { border-color: var(--primary-red); background: rgba(255,255,255,0.1); }
+        .project-card:hover { border-color: var(--primary-red); background: rgba(255,255,255,0.1); box-shadow: 0 10px 30px rgba(230, 57, 70, 0.15); }
         .sub-title { color: var(--primary-red); margin-bottom: 25px; font-size: 1.5rem; display: flex; align-items: center; gap: 12px; }
+        .project-card h4 { margin-bottom: 8px; }
+        .project-card p { font-size: 0.9rem; opacity: 0.8; line-height: 1.6; }
+
+        /* Cards que viram link (repositórios do GitHub) */
+        a.project-card { display: block; color: white; text-decoration: none; }
+        .project-link { display: inline-block; margin-top: 12px; font-size: 0.8rem; font-weight: 700; color: var(--primary-red); }
 
         /* TECH GRID */
         .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
         .tech-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 20px; padding: 40px; text-align: center; transition: 0.5s; }
-        .tech-card:hover { border-color: var(--primary-red); transform: translateY(-10px); }
-        .tech-card i { font-size: 3rem; color: var(--primary-red); margin-bottom: 20px; }
+        .tech-card:hover { border-color: var(--primary-red); transform: translateY(-10px); box-shadow: 0 10px 30px rgba(230, 57, 70, 0.15); }
+        .tech-card i {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 80px; height: 80px; border-radius: 50%;
+            background: rgba(230, 57, 70, 0.12); border: 1px solid rgba(230, 57, 70, 0.3);
+            font-size: 2rem; color: var(--primary-red); margin-bottom: 20px;
+        }
+        .tech-card h4 { margin-bottom: 8px; }
+        .tech-card p { font-size: 0.9rem; opacity: 0.8; }
 
         /* CONTACT */
         .contact-card { background: var(--glass); padding: 60px; border-radius: 40px; text-align: center; border: 1px solid var(--glass-border); }
+        .contact-card h2 { font-size: 2.2rem; margin-bottom: 10px; }
+        .contact-card h2 span { color: var(--primary-red); }
+        .contact-card p { opacity: 0.8; margin-bottom: 25px; }
         .contact-item { padding: 15px 35px; background: var(--primary-red); color: white; text-decoration: none; border-radius: 50px; margin: 10px; display: inline-block; font-weight: 700; transition: 0.3s; }
         .contact-item:hover { filter: brightness(1.2); transform: scale(1.05); }
 
@@ -185,7 +223,7 @@
             <li><a href="#home">Início</a></li>
             <li><a href="#sobre">Sobre</a></li>
             <li><a href="#experiencia">Trajetória</a></li>
-            <li><a href="#projetos">Projetos & Social</a></li>
+            <li><a href="#projetos">Projetos</a></li>
             <li><a href="#tech">Tecnologia</a></li>
             <li><a href="#contato">Contato</a></li>
         </ul>
@@ -194,7 +232,12 @@
     <section class="hero">
         <div class="hero-content" data-aos="zoom-in">
             <h1>Portfólio <span>Pedro Vilela</span></h1>
-            <p>Suporte de Sistemas | SQL | Data Engineering</p>
+            <p>Suporte de Sistemas | SQL | Futuro Desenvolvedor</p>
+            <p class="hero-local"><i class="fa-solid fa-location-dot"></i> Guarulhos, SP</p>
+            <div class="hero-buttons">
+                <a href="#experiencia" class="hero-btn">Ver trajetória</a>
+                <a href="https://github.com/codevilelax" class="hero-btn outline" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+            </div>
         </div>
     </section>
 
@@ -202,23 +245,23 @@
         <h2 class="section-title" data-aos="fade-up">Sobre Mim</h2>
         <div class="about-container" data-aos="fade-up">
             <p>
-  Atualmente atuo com <strong>Suporte de TI (Help Desk)</strong>, onde desenvolvo 
-  competências sólidas em <strong>resolução de problemas técnicos</strong> e atendimento 
-  especializado ao usuário. Meu foco de carreira é a transição para a 
-  <strong>Engenharia de Dados</strong>, dedicando meus estudos ao domínio de 
-  <strong>SQL</strong> e análise de sistemas.
-</p>
+                Sou <strong>Aprendiz de Sistemas na IBL Logística</strong> desde fevereiro de 2026.
+                No dia a dia, atendo chamados dos sistemas da operação (ERP, TMS e BPM),
+                investigo o que deu errado e uso <strong>SQL</strong> para consultar, validar e
+                corrigir dados. Meu objetivo é me tornar <strong>desenvolvedor</strong>.
+            </p>
 
-<p>
-  Possuo uma formação técnica diferenciada, tendo concluído o curso de 
-  <strong>Engenharia de Produção pelo SENAI</strong> e cursando 
-  <strong>Administração pelo SEST SENAT</strong>, com previsão de conclusão do Ensino Médio 
-  para 2026. Além da base em infraestrutura e gestão, domino ferramentas de edição 
-  profissional como <strong>Adobe Photoshop e Premiere</strong>, habilidades que 
-  impulsionaram minha evolução autodidata em <strong>HTML</strong> e desenvolvimento web. 
-  Sou movido por tecnologia e pela constante busca por eficiência técnica e 
-  automação de processos.
-</p>
+            <p>
+                Para chegar lá, estudo SQL e comecei <strong>PHP</strong> do zero em outubro de 2026,
+                com todos os exercícios publicados no GitHub. Antes disso, já tinha estudado
+                <strong>Python</strong> e aprendido <strong>HTML</strong> sozinho, que usei para
+                construir este portfólio.
+            </p>
+
+            <p>
+                Concluí o curso de <strong>Engenharia de Produção pelo SENAI</strong>, curso
+                <strong>Administração pelo SEST SENAT</strong> e termino o Ensino Médio em 2026.
+            </p>
         </div>
     </section>
 
@@ -231,9 +274,10 @@
                     <h3>IBL Logística</h3>
                     <h4>Aprendiz de Sistemas</h4>
                     <ul>
-                        <li>Atuação com ERP, TMS e BPM (Rodopar, ESL Cloud, Logix, Satellite, Holmes, Dootax e IBL Tech Hub).</li>
-                        <li>Análise, diagnóstico e correção de falhas em sistemas com foco em agilidade via Softdesk.</li>
-                        <li>Uso estratégico de SQL para validação de dados, consultas e integrações de documentos.</li>
+                        <li>Suporte a ERP, TMS e BPM (Rodopar, ESL Cloud, Logix, Satellite, Holmes, Dootax e IBL Tech Hub).</li>
+                        <li>Atendimento de chamados pelo Softdesk: análise, diagnóstico e correção de falhas nos sistemas.</li>
+                        <li>Uso de SQL para consultas, validação de dados e integrações de documentos.</li>
+                        <li>Acompanhamento das automações (RPA) para manter os processos rodando.</li>
                     </ul>
                 </div>
             </div>
@@ -266,13 +310,27 @@
     </section>
 
     <section id="projetos">
-        <h2 class="section-title" data-aos="fade-up">Projetos Profissionais & Sociais</h2>
+        <h2 class="section-title" data-aos="fade-up">Projetos</h2>
         <div class="split-grid">
+            <div class="column">
+                <h3 class="sub-title"><i class="fa-solid fa-code"></i> Estudos</h3>
+                <a class="project-card" href="https://github.com/codevilelax/estudos-php" target="_blank" rel="noopener" data-aos="fade-up">
+                    <h4>estudos-php (2026)</h4>
+                    <p>Exercícios de PHP desde o começo. Já são mais de 20, de variáveis e arrays até condicionais e laços.</p>
+                    <span class="project-link"><i class="fa-brands fa-github"></i> Ver no GitHub</span>
+                </a>
+                <a class="project-card" href="https://github.com/codevilelax/Estudos_Python" target="_blank" rel="noopener" data-aos="fade-up" data-aos-delay="200">
+                    <h4>Estudos_Python (2025)</h4>
+                    <p>Estudos de Python feitos em Jupyter Notebook.</p>
+                    <span class="project-link"><i class="fa-brands fa-github"></i> Ver no GitHub</span>
+                </a>
+            </div>
+
             <div class="column">
                 <h3 class="sub-title"><i class="fa-solid fa-code-branch"></i> Profissional</h3>
                 <div class="project-card" data-aos="fade-up">
                     <h4>InovAprendiz – Operação DSO (2026)</h4>
-                    <p>Contribuo com ideias e apoiando a equipe para garantir a conformidade do projeto, além de exercer o papel de vice-líder em um projeto de nível nacional.</p>
+                    <p>Vice-líder em um projeto de nível nacional. Contribuo com ideias e apoio a equipe para garantir a conformidade do projeto.</p>
                 </div>
                 <div class="project-card" data-aos="fade-up" data-aos-delay="200">
                     <h4>LSS - Yellow Belt (2025)</h4>
@@ -312,22 +370,38 @@
                 <h4>RPA & Integração</h4>
                 <p>Monitoramento e análise de automações garantindo a estabilidade dos processos.</p>
             </div>
+            <div class="tech-card" data-aos="flip-up">
+                <i class="fa-solid fa-code"></i>
+                <h4>PHP & Python</h4>
+                <p>Estudando PHP desde out/2026 e Python, com os exercícios versionados no Git e no GitHub.</p>
+            </div>
+            <div class="tech-card" data-aos="flip-up" data-aos-delay="200">
+                <i class="fa-solid fa-chart-line"></i>
+                <h4>Lean Six Sigma</h4>
+                <p>Yellow Belt: identificação de melhorias e projeto apresentado à Excelência Operacional.</p>
+            </div>
+            <div class="tech-card" data-aos="flip-up" data-aos-delay="400">
+                <i class="fa-brands fa-html5"></i>
+                <h4>HTML & CSS</h4>
+                <p>Construí este portfólio com HTML e CSS.</p>
+            </div>
         </div>
     </section>
 
     <section id="contato">
         <div class="contact-card" data-aos="zoom-in">
             <h2>Vamos <span>conversar?</span></h2>
-            <p>Estou disponível para novos desafios em Systems Dev. e Data Engineering.</p>
+            <p>Estou disponível para novos desafios em sistemas e desenvolvimento.</p>
             <div class="contact-links">
                 <a href="mailto:vilelap725@gmail.com" class="contact-item">E-mail</a>
                 <a href="https://www.linkedin.com/in/pedrohsvilela/" class="contact-item" style="background: #0077b5;">LinkedIn</a>
-                <a href="http://wa.me/5511985208285" class="contact-item" style="background: #25d366;">WhatsApp</a>
+                <a href="https://wa.me/5511985208285" class="contact-item" style="background: #25d366;">WhatsApp</a>
+                <a href="https://github.com/codevilelax" class="contact-item" style="background: #333;">GitHub</a>
             </div>
         </div>
     </section>
 
-    <footer>©️ 2026 P. Vilela - Direitos reservados</footer>
+    <footer>©️ 2026 P. Vilela - Direitos reservados · Atualizado em outubro de 2026</footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
